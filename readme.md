@@ -31,5 +31,6 @@ The program searches for audio files inside "audios" folder and model configurat
   * Link lofar configuration
 * Setup support for DEMON
 * Improve GUI
+* Add option to place Grad-CAM mask over spectrogram when model is loaded and has the same LOFAR config (or change config auto)
 
 
