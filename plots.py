@@ -241,6 +241,10 @@ class SpectrogramWidget(pg.GraphicsLayoutWidget):
 
         # self.hist = cbar
 
+        #########################################################################
+        # TODO adapt to receive DEMON upgrade. A mode flag (self.mode = 'lofar' || 'demon') must be created to indicate
+        # whether the spectrogram will operate with the LOFAR or DEMON stack 
+
         sr=44100
         chunk=1024
         tpsw=False
@@ -248,6 +252,8 @@ class SpectrogramWidget(pg.GraphicsLayoutWidget):
         self.set_config(sr, chunk, tpsw, spec_cut)
         self.show()
         self.models = {}
+
+        #########################################################################
 
         # max_img_size = 700
         # min_img_size = 700
@@ -290,6 +296,10 @@ class SpectrogramWidget(pg.GraphicsLayoutWidget):
         # self.img_array[:, 1:] = np.nan
 
     def set_config(self, sr, chunk, tpsw, spec_cut):
+        #########################################################################
+        # TODO adapt to receive DEMON update. Add update to the self.mode flag.
+        # Raise the hierch level for the params
+
         max_img_size = int(2100*(sr/44100))
         min_img_size = int(700*(sr/44100))
         self.max_img_size = max_img_size
@@ -329,7 +339,12 @@ class SpectrogramWidget(pg.GraphicsLayoutWidget):
 
         self.img_array[:, 1:] = np.nan
 
+        #########################################################################
+
     def update_config(self, new_fs=None, new_chunk=None, new_tpsw=None, new_spec_cut=None):
+        #########################################################################
+        # TODO adapt to receive DEMON update
+        
         self.clear_plot()
         if new_fs is None:
             new_fs = self.sample_rate
@@ -339,6 +354,9 @@ class SpectrogramWidget(pg.GraphicsLayoutWidget):
             new_tpsw = self.tpsw
         if new_spec_cut is None:
             new_spec_cut = self.spec_cut
+
+        #########################################################################
+
         self.p1.removeItem(self.img)
         self.removeItem(self.hist)
         self.set_config(new_fs, new_chunk, new_tpsw, new_spec_cut)
@@ -354,6 +372,8 @@ class SpectrogramWidget(pg.GraphicsLayoutWidget):
         del self.models[name]
 
     def setPos(self, update=0):
+        #########################################################################
+        # TODO adapt to receive DEMON update
         if update > 0:
             self.counter += (1./self.sample_rate)*self.chunk*(update)
 
@@ -369,10 +389,17 @@ class SpectrogramWidget(pg.GraphicsLayoutWidget):
             
             minimum = - max(min_value, self.counter)
             self.p1.setYRange(max(-max_value, minimum), 0)
+        #########################################################################
 
     def clear_plot(self):
+        #########################################################################
+        # TODO change img array creation to suport demon. Using chunk alone 
+        # to set the img_array width serves only to the lofar stack. In DEMON mode
+        # the decimation must be taken into consideration
+
         self.img_array = np.zeros((int(self.chunk/2+1), self.max_img_size))
         self.img_array[:, :-1] = np.nan
+        #########################################################################
         
         self.hist.setLevels((np.nanmin(self.img_array), np.nanmax(self.img_array)))
         self.img.setImage(self.img_array, autoLevels=False)
@@ -425,6 +452,11 @@ class SpectrogramWidget(pg.GraphicsLayoutWidget):
 
         n_chunks = new_chunk.shape[0]//self.chunk
         chunks = np.vstack([new_chunk[i*self.chunk:(i+1)*self.chunk] for i in range(n_chunks)]).transpose()
+
+        ##################################################################################################
+        # TODO place this code inside a lofar method that receives the chunck stack and returns the spectrums. 
+        # Then, the demon method can be designed with the same signature
+
         # chunks = new_chunk.reshape((self.chunk, -1))        
         n_specs = chunks.shape[1]
 
@@ -443,6 +475,8 @@ class SpectrogramWidget(pg.GraphicsLayoutWidget):
         if self.spec_cut != np.nan:
             cut = self.spec_cut
             psd[psd < cut] = cut
+
+        ###################################################################################################
 
 
         # roll down one and replace leading edge with new data

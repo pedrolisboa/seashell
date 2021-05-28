@@ -277,7 +277,12 @@ class MainWindow(QMainWindow):
 
             else:
                 self.mr = MicReceiver(rq, chunk=self.config["n_fft"], decimation = self.config["decimation"])
+
+            ##################################################################################################################
+            # TODO adapt to receive DEMON upgrade
             self.ui.specPlot.update_config(self.mr.rate, None, self.config["tpsw"], self.config["spec_cutoff"]) # None chunk
+
+            ##################################################################################################################
             self.ui.timePlot.update_config(self.mr.rate, None) # None chunk
             self.ui.modelPlot.update_config(self.mr.rate, None) # None chunk
 
