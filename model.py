@@ -52,13 +52,8 @@ class Model(QtCore.QObject):
 
 
     def forward(self, specs):
-        # TODO update
-        # specs [n x n_fft]
         return self.model.predict(specs)
-        # placeholder_index = self.decision_size//2
-        # placeholder_freq = self.placeholder_freq
-        # return specs[placeholder_index, placeholder_freq]
-
+        
 class BaseModel():
     def __init__(self, config):
         self.decision_size = config["decisionSize"]
@@ -75,3 +70,26 @@ class BaseModel():
         placeholder_index = self.decision_size//2
         placeholder_freq = self.placeholder_freq
         return specs[placeholder_index, placeholder_freq]
+
+
+class MLPModel(BaseModel):
+    def __init__(self, config):
+        self.decision_size = config["decisionSize"]
+        self.model_path = config["model_path"]
+        
+        self.placeholder_freq = np.random.randint(0, 100)
+
+        ##############################################
+        # TODO logica de construção do modelo
+        # self.model = load...
+        #############################################
+
+    def predict(self, specs):
+         # TODO update
+        # specs [n x n_fft]
+        # return self.model.predict(specs)
+        placeholder_index = self.decision_size//2
+        placeholder_freq = self.placeholder_freq
+        return specs[placeholder_index, placeholder_freq]
+
+    
