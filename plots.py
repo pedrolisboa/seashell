@@ -94,7 +94,8 @@ class ModelPlot(pg.GraphicsLayoutWidget):
 
        self.plot.showGrid(x=True, y=True)
     #    self.line_ref = self.plot(pen='#4f92ce')
-       self.colors = cycle(['#66b266'])#, '#ff6262', '#008169', '#facc64'])
+    #    self.colors = cycle(['#66b266'])
+       self.colors = cycle(['#66b266', '#ff6262', '#008169', '#facc64'])
 
        self.counter = 0 
        self.data_sink.connect(self.update_model)
@@ -103,8 +104,8 @@ class ModelPlot(pg.GraphicsLayoutWidget):
        self.plot.setLabel("left", "Output", **styles)
        self.plot.setLabel("bottom", "Time Elapsed (s)", **styles)
        
-    #    self.legend = self.plot.addLegend()
-    #    self.legend.setBrush('k')
+       self.legend = self.plot.addLegend()
+       self.legend.setBrush('k')
 
        self.ci.layout.setColumnStretchFactor(0, 12.7)
 
@@ -148,12 +149,12 @@ class ModelPlot(pg.GraphicsLayoutWidget):
 
     def subscribe_model(self, name, model):
         line_ref = self.plot.plot()
-        # self.legend.addItem(line_ref, name=name)
+        self.legend.addItem(line_ref, name=name)
 
         # model limiter
-        for name in self.models.keys():
-            self.unsubscribe_model(name)
-            # self.legend.removeItem(line_ref, name)
+        # for name in self.models.keys():
+        #     self.unsubscribe_model(name)
+        #     # self.legend.removeItem(line_ref, name)
 
         self.models[name] = (model, line_ref, next(self.colors))
         self.buffers[name] = np.zeros((self.buffer_size))
@@ -172,6 +173,8 @@ class ModelPlot(pg.GraphicsLayoutWidget):
 
         if len(self.buffers) == 0:
             self.timer.stop()
+
+        self.legend.removeItem(line_ref)
 
 
     def update_model(self, name, value):

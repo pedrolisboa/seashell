@@ -150,16 +150,11 @@ class MainWindow(QMainWindow):
 
         config = json.load(open(os.path.join(self.ui.modelTree.startDir, config_file), 'r'))
 
-        model = Model(
-            decision_size=config["decisionSize"], 
-            name=model_name, 
-            model_path=config["model_path"],
-            model_plot=self.ui.modelPlot
-        )
+        model = Model(config, model_name, self.ui.modelPlot)
         
         #model limiter
-        if self.ui.modelTable.rowCount() > 0:
-            self.del_model(0, 0)
+        # if self.ui.modelTable.rowCount() > 0:
+        #     self.del_model(0, 0)
 
         self.ui.modelTable.addModel(model)
         self.ui.specPlot.subscribe_model(model.name, model)
