@@ -4,10 +4,22 @@
 
 ### Setup
 
+Obs: only works with python versions <= 3.7
+
 ```
 sudo sh setup.sh
 pip install -r requirements.txt
 ```
+
+### Setup for Docker
+
+```
+xhost +local:docker
+```
+Build the image
+
+
+Run the script to start the container
 
 ### Observations
 
