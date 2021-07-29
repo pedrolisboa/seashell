@@ -1,6 +1,6 @@
 {
     "decisionSize": 1,
     "model_path": "NeuralNetworkClassification_fold_4_inputs_400_outputs_4_neurons_20_hidden_act_tanh_output_act_tanh_fitted.h5",
-    "model_class": "BaseModel",
+    "model_class": "MLPModel",
     "spectrum_cutoff": 400
 }
