@@ -1,4 +1,4 @@
-# -*- coding: utf-8 -*-
+
 
 # Form implementation generated from reading ui file 'seashell2.ui',
 # licensing of 'seashell2.ui' applies.
@@ -9,6 +9,8 @@
 # WARNING! All changes made in this file will be lost!
 
 from PySide2 import QtCore, QtGui, QtWidgets
+from plots import SpectrogramWidget, TimePlot, ModelPlot
+from utils import FolderTree, ModelTree, ModelTable, ModelInfo, AudioSlider
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
@@ -234,5 +236,3 @@ class Ui_MainWindow(object):
         self.tabWidget_2.setTabText(self.tabWidget_2.indexOf(self.tab_5), QtWidgets.QApplication.translate("MainWindow", "Model Plot", None, -1))
         self.menuFile.setTitle(QtWidgets.QApplication.translate("MainWindow", "File", None, -1))
 
-from plots import SpectrogramWidget, TimePlot, ModelPlot
-from utils import AudioSlider, FolderTree, ModelTree, ModelTable, ModelInfo

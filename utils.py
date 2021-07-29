@@ -2,7 +2,7 @@ import os
 from PySide2.QtWidgets import QTreeWidget, QTreeWidgetItem, QTableWidget, QTableWidgetItem, QHeaderView, QSlider
 from PySide2 import QtCore
 
-from main import MainWindow
+# from main import MainWindow
 
 class FolderTree(QTreeWidget):
     def __init__(self, parent=None):

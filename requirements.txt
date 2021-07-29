@@ -1,4 +1,4 @@
-numpy==1.20.1
+numpy==1.19.2
 pyside2==5.13.2
 matplotlib==3.3.4
 pyqtgraph==0.11.1
@@ -6,3 +6,4 @@ pgcolorbar==1.1.0
 pyaudio==0.2.11
 scipy==1.6.1
 signaling==1.0.0
+tensorflow==2.5.0
