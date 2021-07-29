@@ -71,10 +71,6 @@ class BaseModel():
 
         self.model_folder = os.path.join(os.getcwd(), 'models', 'states')
 
-        ##############################################
-        # TODO logica de construção do modelo
-        # self.model = load...
-        #############################################
         self.model = keras.models.load_model(os.path.join(self.model_folder, self.model_path))
 
     def predict(self, specs):
@@ -87,6 +83,10 @@ class MLPModel(BaseModel):
     def __init__(self, config):
         self.decision_size = config["decisionSize"]
         self.model_path = config["model_path"]
+        
+        label_mapping = config["class_labels"]
+        self.label_mapping = {int(key): value for key, value in label_mapping.items()}
+
         if "spectrum_cutoff" in config.keys():
 
             self.spectrum_cutoff = config["spectrum_cutoff"]
@@ -100,8 +100,8 @@ class MLPModel(BaseModel):
     def predict(self, specs):
         if self.spectrum_cutoff:
             specs = specs[:, :self.spectrum_cutoff] 
-        # placeholder_index = self.decision_size//2
-        # placeholder_freq = self.placeholder_freq
-        # return specs[placeholder_index, placeholder_freq]
+
         out = self.model(specs)
-        return out.numpy().argmax(axis=-1)[0]
+        target = out.numpy().argmax(axis=-1)[0]
+        prob = out[0, target] 
+        return {"output": self.label_mapping[target], "confidence": prob}

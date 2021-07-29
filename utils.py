@@ -162,7 +162,7 @@ class ModelTable(QTableWidget):
         super(ModelTable, self).__init__(parent, *args)
 
         self.mylist = []
-        self.header = ["Model", "Output"]
+        self.header = ["Model", "Output" "Confidence"]
         self.setEditTriggers(QTableWidget.NoEditTriggers)
 
         header = self.horizontalHeader()       
@@ -181,6 +181,7 @@ class ModelTable(QTableWidget):
         self.insertRow(n_models)
         self.setItem(n_models, 0, QTableWidgetItem(model_name))
         self.setItem(n_models, 1, QTableWidgetItem(""))
+        self.setItem(n_models, 2, QTableWidgetItem(""))
 
         model.table = self
 
@@ -210,7 +211,8 @@ class ModelTable(QTableWidget):
         #     row_name = self.item(i_model, 0).text()
 
         #     if row_name == model_name:
-        self.setItem(i_model, 1, QTableWidgetItem("%.2f" % value))
+        self.setItem(i_model, 1, QTableWidgetItem("%s"   % value["output"]))
+        self.setItem(i_model, 2, QTableWidgetItem("%.2f" % value["confidence"]))
                 # return 
 
     def find_model_index(self, model_name):

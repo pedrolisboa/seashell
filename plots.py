@@ -183,7 +183,7 @@ class ModelPlot(pg.GraphicsLayoutWidget):
 
         buffer = self.buffers[name]
         buffer = np.roll(self.buffers[name], -d_size)
-        buffer[-d_size:] = np.repeat(value, d_size)
+        buffer[-d_size:] = np.repeat(value["confidence"], d_size)
 
         self.buffers[name] = buffer
 
