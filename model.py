@@ -1,25 +1,40 @@
 import numpy as np
 from PySide2 import QtCore
 from queue import Queue
+import importlib
+import sys
+
+import os
+
+import tensorflow.keras as keras
 
 class Model(QtCore.QObject):
     loaded = QtCore.Signal()
-    def __init__(self, decision_size=1, name='', model_path='', model_plot=None):
+    def __init__(self, config, model_name, model_plot=None):
         super(Model, self).__init__()
 
-        self.decision_size = decision_size
-        self.model_path = model_path
+        self.decision_size = config["decisionSize"]
+        self.model = self.load_model(config)
         self.q = Queue()
-        self.name = name
+        self.name = model_name
 
         self.loaded.connect(self._update)
-
         self.table = None
-
         self.model_plot = model_plot
 
-        self.placeholder_freq = np.random.randint(0, 100)
+    def load_model(self, config):
+        class_path = config["model_class"]
+        class_path = class_path.split(".")
+        
+        model_class = class_path[-1]
+        if len(class_path) > 1:
+            class_module_name = class_path[:-1].join(".")
+            module = importlib.import_module(class_module_name)
+        else:
+            module = sys.modules[__name__]
 
+        model = getattr(module, model_class)(config)
+        return model
 
     def update(self):
         if self.q.qsize() >= self.decision_size:
@@ -41,7 +56,52 @@ class Model(QtCore.QObject):
 
 
     def forward(self, specs):
+        return self.model.predict(specs)
+        
+class BaseModel():
+    def __init__(self, config):
+        self.decision_size = config["decisionSize"]
+        self.model_path = config["model_path"]
+        if "spectrum_cutoff" in config.keys():
+
+            self.spectrum_cutoff = config["spectrum_cutoff"]
+        else:
+            self.spectrum_cutoff = None
+        self.placeholder_freq = np.random.randint(0, 100)
+
+        self.model_folder = os.path.join(os.getcwd(), 'models', 'states')
+
+        self.model = keras.models.load_model(os.path.join(self.model_folder, self.model_path))
+
+    def predict(self, specs):
         placeholder_index = self.decision_size//2
         placeholder_freq = self.placeholder_freq
         return specs[placeholder_index, placeholder_freq]
 
+
+class MLPModel(BaseModel):
+    def __init__(self, config):
+        self.decision_size = config["decisionSize"]
+        self.model_path = config["model_path"]
+        
+        label_mapping = config["class_labels"]
+        self.label_mapping = {int(key): value for key, value in label_mapping.items()}
+
+        if "spectrum_cutoff" in config.keys():
+
+            self.spectrum_cutoff = config["spectrum_cutoff"]
+        else:
+            self.spectrum_cutoff = None
+
+        self.model_folder = os.path.join(os.getcwd(), 'models', 'states')
+
+        self.model = keras.models.load_model(os.path.join(self.model_folder, self.model_path))
+
+    def predict(self, specs):
+        if self.spectrum_cutoff:
+            specs = specs[:, :self.spectrum_cutoff] 
+
+        out = self.model(specs)
+        target = out.numpy().argmax(axis=-1)[0]
+        prob = out[0, target] 
+        return {"output": self.label_mapping[target], "confidence": prob}

@@ -150,16 +150,11 @@ class MainWindow(QMainWindow):
 
         config = json.load(open(os.path.join(self.ui.modelTree.startDir, config_file), 'r'))
 
-        model = Model(
-            decision_size=config["decisionSize"], 
-            name=model_name, 
-            model_path=config["model_path"],
-            model_plot=self.ui.modelPlot
-        )
+        model = Model(config, model_name, self.ui.modelPlot)
         
         #model limiter
-        if self.ui.modelTable.rowCount() > 0:
-            self.del_model(0, 0)
+        # if self.ui.modelTable.rowCount() > 0:
+        #     self.del_model(0, 0)
 
         self.ui.modelTable.addModel(model)
         self.ui.specPlot.subscribe_model(model.name, model)
@@ -173,8 +168,8 @@ class MainWindow(QMainWindow):
         
         # self.ui.modelPlot.clear_plot()
         # limit model
-        if (self.ui.modelTable.rowCount() > 0) and reset_models:
-            self.del_model(0, 0)
+        # if (self.ui.modelTable.rowCount() > 0) and reset_models:
+        #     self.del_model(0, 0)
 
         if pause:
             self.pause()
@@ -205,9 +200,9 @@ class MainWindow(QMainWindow):
             config = {
                 "rf_rate": 1000/def_fps, # ms
                 "n_fft": 1024,
-                "decimation": 1,
-                "tpsw": False,
-                "spec_cutoff": np.nan
+                "decimation": 3,
+                "tpsw": True,
+                "spec_cutoff": -4.00
             }
         else:
             raise NotImplementedError("User input config not implemented")
@@ -277,7 +272,12 @@ class MainWindow(QMainWindow):
 
             else:
                 self.mr = MicReceiver(rq, chunk=self.config["n_fft"], decimation = self.config["decimation"])
+
+            ##################################################################################################################
+            # TODO adapt to receive DEMON upgrade
             self.ui.specPlot.update_config(self.mr.rate, None, self.config["tpsw"], self.config["spec_cutoff"]) # None chunk
+
+            ##################################################################################################################
             self.ui.timePlot.update_config(self.mr.rate, None) # None chunk
             self.ui.modelPlot.update_config(self.mr.rate, None) # None chunk
 

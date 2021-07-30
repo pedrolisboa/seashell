@@ -1,4 +1,5 @@
 {
     "decisionSize": 10,
-    "model_path": ""
+    "model_path": "",
+    "model_class": "BaseModel"
 }
