@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>928</width>
-    <height>728</height>
+    <width>1296</width>
+    <height>706</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -17,9 +17,9 @@
    <widget class="Line" name="line">
     <property name="geometry">
      <rect>
-      <x>0</x>
+      <x>10</x>
       <y>190</y>
-      <width>361</width>
+      <width>491</width>
       <height>21</height>
      </rect>
     </property>
@@ -30,10 +30,10 @@
    <widget class="Line" name="line_2">
     <property name="geometry">
      <rect>
-      <x>350</x>
+      <x>490</x>
       <y>0</y>
       <width>20</width>
-      <height>681</height>
+      <height>651</height>
      </rect>
     </property>
     <property name="orientation">
@@ -43,7 +43,7 @@
    <widget class="QPushButton" name="playButton">
     <property name="geometry">
      <rect>
-      <x>80</x>
+      <x>90</x>
       <y>180</y>
       <width>51</width>
       <height>21</height>
@@ -56,7 +56,7 @@
    <widget class="QPushButton" name="pauseButton">
     <property name="geometry">
      <rect>
-      <x>150</x>
+      <x>160</x>
       <y>180</y>
       <width>51</width>
       <height>21</height>
@@ -69,7 +69,7 @@
    <widget class="QPushButton" name="resetbutton">
     <property name="geometry">
      <rect>
-      <x>220</x>
+      <x>230</x>
       <y>180</y>
       <width>51</width>
       <height>21</height>
@@ -82,10 +82,10 @@
    <widget class="QFrame" name="frame">
     <property name="geometry">
      <rect>
-      <x>360</x>
+      <x>510</x>
       <y>0</y>
-      <width>561</width>
-      <height>681</height>
+      <width>771</width>
+      <height>651</height>
      </rect>
     </property>
     <property name="styleSheet">
@@ -102,8 +102,8 @@
       <rect>
        <x>10</x>
        <y>10</y>
-       <width>541</width>
-       <height>671</height>
+       <width>751</width>
+       <height>631</height>
       </rect>
      </property>
     </widget>
@@ -111,10 +111,10 @@
    <widget class="QFrame" name="frame_2">
     <property name="geometry">
      <rect>
-      <x>0</x>
-      <y>510</y>
-      <width>361</width>
-      <height>171</height>
+      <x>10</x>
+      <y>490</y>
+      <width>481</width>
+      <height>161</height>
      </rect>
     </property>
     <property name="styleSheet">
@@ -131,8 +131,8 @@
       <rect>
        <x>10</x>
        <y>10</y>
-       <width>331</width>
-       <height>151</height>
+       <width>461</width>
+       <height>141</height>
       </rect>
      </property>
      <widget class="TimePlot" name="widget_3" native="true">
@@ -150,9 +150,9 @@
    <widget class="QTabWidget" name="tabWidget">
     <property name="geometry">
      <rect>
-      <x>0</x>
+      <x>10</x>
       <y>0</y>
-      <width>361</width>
+      <width>481</width>
       <height>181</height>
      </rect>
     </property>
@@ -276,6 +276,9 @@
       <property name="text">
        <string>TPSW</string>
       </property>
+      <property name="checked">
+       <bool>true</bool>
+      </property>
      </widget>
      <widget class="QLabel" name="label_3">
       <property name="geometry">
@@ -298,6 +301,9 @@
         <width>79</width>
         <height>23</height>
        </rect>
+      </property>
+      <property name="currentText">
+       <string>3</string>
       </property>
       <item>
        <property name="text">
@@ -350,6 +356,9 @@
       <property name="maximum">
        <double>9999.989999999999782</double>
       </property>
+      <property name="value">
+       <double>-4.000000000000000</double>
+      </property>
      </widget>
      <widget class="QLabel" name="label_5">
       <property name="geometry">
@@ -367,9 +376,9 @@
      <widget class="QCheckBox" name="cutoffCheck">
       <property name="geometry">
        <rect>
-        <x>50</x>
+        <x>30</x>
         <y>90</y>
-        <width>121</width>
+        <width>141</width>
         <height>21</height>
        </rect>
       </property>
@@ -378,6 +387,9 @@
       </property>
       <property name="text">
        <string>Spectrum Cutoff</string>
+      </property>
+      <property name="checked">
+       <bool>true</bool>
       </property>
      </widget>
     </widget>
@@ -451,8 +463,8 @@
    <widget class="Line" name="line_3">
     <property name="geometry">
      <rect>
-      <x>0</x>
-      <y>500</y>
+      <x>10</x>
+      <y>470</y>
       <width>361</width>
       <height>21</height>
      </rect>
@@ -464,10 +476,10 @@
    <widget class="QTabWidget" name="tabWidget_2">
     <property name="geometry">
      <rect>
-      <x>0</x>
+      <x>10</x>
       <y>200</y>
-      <width>361</width>
-      <height>311</height>
+      <width>481</width>
+      <height>281</height>
      </rect>
     </property>
     <property name="currentIndex">
@@ -482,7 +494,7 @@
        <rect>
         <x>0</x>
         <y>0</y>
-        <width>181</width>
+        <width>302</width>
         <height>131</height>
        </rect>
       </property>
@@ -496,7 +508,7 @@
        <number>0</number>
       </property>
       <property name="columnCount">
-       <number>2</number>
+       <number>3</number>
       </property>
       <attribute name="horizontalHeaderVisible">
        <bool>true</bool>
@@ -511,11 +523,16 @@
         <string>Output</string>
        </property>
       </column>
+      <column>
+       <property name="text">
+        <string>Confidence</string>
+       </property>
+      </column>
      </widget>
      <widget class="ModelTree" name="modelTree">
       <property name="geometry">
        <rect>
-        <x>190</x>
+        <x>310</x>
         <y>0</y>
         <width>161</width>
         <height>131</height>
@@ -536,8 +553,8 @@
        <rect>
         <x>0</x>
         <y>140</y>
-        <width>351</width>
-        <height>131</height>
+        <width>471</width>
+        <height>101</height>
        </rect>
       </property>
      </widget>
@@ -593,8 +610,8 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>928</width>
-     <height>20</height>
+     <width>1296</width>
+     <height>22</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFile">
