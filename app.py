@@ -3,7 +3,7 @@
 # Form implementation generated from reading ui file 'seashell_with_layouts.ui',
 # licensing of 'seashell_with_layouts.ui' applies.
 #
-# Created: Sun Aug  1 01:19:36 2021
+# Created: Sun Aug  1 01:32:22 2021
 #      by: pyside2-uic  running on PySide2 5.13.2
 #
 # WARNING! All changes made in this file will be lost!
@@ -99,17 +99,18 @@ class Ui_MainWindow(object):
         self.verticalLayout_6.setContentsMargins(0, 0, 0, 0)
         self.verticalLayout_6.setObjectName("verticalLayout_6")
         self.scrollArea = QtWidgets.QScrollArea(self.tab_2)
+        self.scrollArea.setFrameShape(QtWidgets.QFrame.NoFrame)
         self.scrollArea.setWidgetResizable(True)
         self.scrollArea.setObjectName("scrollArea")
         self.scrollAreaWidgetContents = QtWidgets.QWidget()
-        self.scrollAreaWidgetContents.setGeometry(QtCore.QRect(0, 0, 437, 150))
+        self.scrollAreaWidgetContents.setGeometry(QtCore.QRect(0, 0, 439, 201))
         self.scrollAreaWidgetContents.setObjectName("scrollAreaWidgetContents")
         self.verticalLayout_3 = QtWidgets.QVBoxLayout(self.scrollAreaWidgetContents)
         self.verticalLayout_3.setSpacing(3)
         self.verticalLayout_3.setContentsMargins(9, 9, 9, 9)
         self.verticalLayout_3.setObjectName("verticalLayout_3")
         self.frame_6 = QtWidgets.QFrame(self.scrollAreaWidgetContents)
-        self.frame_6.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.frame_6.setFrameShape(QtWidgets.QFrame.NoFrame)
         self.frame_6.setFrameShadow(QtWidgets.QFrame.Raised)
         self.frame_6.setObjectName("frame_6")
         self.verticalLayout_5 = QtWidgets.QVBoxLayout(self.frame_6)
@@ -176,10 +177,11 @@ class Ui_MainWindow(object):
         self.verticalLayout_11.setContentsMargins(0, 0, 0, 0)
         self.verticalLayout_11.setObjectName("verticalLayout_11")
         self.scrollArea_3 = QtWidgets.QScrollArea(self.tab_6)
+        self.scrollArea_3.setFrameShape(QtWidgets.QFrame.NoFrame)
         self.scrollArea_3.setWidgetResizable(True)
         self.scrollArea_3.setObjectName("scrollArea_3")
         self.scrollAreaWidgetContents_3 = QtWidgets.QWidget()
-        self.scrollAreaWidgetContents_3.setGeometry(QtCore.QRect(0, 0, 437, 150))
+        self.scrollAreaWidgetContents_3.setGeometry(QtCore.QRect(0, 0, 439, 201))
         self.scrollAreaWidgetContents_3.setObjectName("scrollAreaWidgetContents_3")
         self.verticalLayout_12 = QtWidgets.QVBoxLayout(self.scrollAreaWidgetContents_3)
         self.verticalLayout_12.setObjectName("verticalLayout_12")
@@ -254,6 +256,7 @@ class Ui_MainWindow(object):
         self.frame_4 = QtWidgets.QFrame(self.frame_5)
         self.frame_4.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.frame_4.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.frame_4.setLineWidth(1)
         self.frame_4.setObjectName("frame_4")
         self.horizontalLayout_3 = QtWidgets.QHBoxLayout(self.frame_4)
         self.horizontalLayout_3.setSpacing(3)
@@ -281,7 +284,7 @@ class Ui_MainWindow(object):
         self.scrollArea_2.setWidgetResizable(True)
         self.scrollArea_2.setObjectName("scrollArea_2")
         self.scrollAreaWidgetContents_2 = QtWidgets.QWidget()
-        self.scrollAreaWidgetContents_2.setGeometry(QtCore.QRect(0, 0, 437, 221))
+        self.scrollAreaWidgetContents_2.setGeometry(QtCore.QRect(0, 0, 437, 314))
         self.scrollAreaWidgetContents_2.setObjectName("scrollAreaWidgetContents_2")
         self.verticalLayout_2 = QtWidgets.QVBoxLayout(self.scrollAreaWidgetContents_2)
         self.verticalLayout_2.setSpacing(2)
@@ -317,8 +320,8 @@ class Ui_MainWindow(object):
         self.modelInfo = ModelInfo(self.scrollAreaWidgetContents_2)
         self.modelInfo.setObjectName("modelInfo")
         self.verticalLayout_2.addWidget(self.modelInfo)
-        self.verticalLayout_2.setStretch(0, 4)
-        self.verticalLayout_2.setStretch(1, 2)
+        self.verticalLayout_2.setStretch(0, 7)
+        self.verticalLayout_2.setStretch(1, 5)
         self.scrollArea_2.setWidget(self.scrollAreaWidgetContents_2)
         self.verticalLayout_7.addWidget(self.scrollArea_2)
         self.tabWidget_2.addTab(self.tab_4, "")
@@ -335,26 +338,9 @@ class Ui_MainWindow(object):
         self.verticalLayout_8.addWidget(self.modelPlot)
         self.tabWidget_2.addTab(self.tab_5, "")
         self.verticalLayout.addWidget(self.tabWidget_2)
-        self.frame_2 = QtWidgets.QFrame(self.frame_5)
-        self.frame_2.setStyleSheet("background-color: rgb(0, 0, 0);")
-        self.frame_2.setFrameShape(QtWidgets.QFrame.StyledPanel)
-        self.frame_2.setFrameShadow(QtWidgets.QFrame.Raised)
-        self.frame_2.setObjectName("frame_2")
-        self.gridLayout_4 = QtWidgets.QGridLayout(self.frame_2)
-        self.gridLayout_4.setSpacing(0)
-        self.gridLayout_4.setContentsMargins(3, 3, 0, 0)
-        self.gridLayout_4.setObjectName("gridLayout_4")
-        self.timePlot = TimePlot(self.frame_2)
-        self.timePlot.setObjectName("timePlot")
-        self.widget_3 = TimePlot(self.timePlot)
-        self.widget_3.setGeometry(QtCore.QRect(340, 300, 611, 531))
-        self.widget_3.setObjectName("widget_3")
-        self.gridLayout_4.addWidget(self.timePlot, 0, 0, 1, 1)
-        self.verticalLayout.addWidget(self.frame_2)
         self.verticalLayout.setStretch(0, 10)
         self.verticalLayout.setStretch(1, 1)
         self.verticalLayout.setStretch(2, 15)
-        self.verticalLayout.setStretch(3, 8)
         self.gridLayout_2.addWidget(self.frame_5, 0, 0, 1, 1)
         self.gridLayout_2.setColumnStretch(0, 3)
         self.gridLayout_2.setColumnStretch(1, 5)
@@ -409,12 +395,12 @@ class Ui_MainWindow(object):
         self.pauseButton.setText(QtWidgets.QApplication.translate("MainWindow", "Pause", None, -1))
         self.resetbutton.setText(QtWidgets.QApplication.translate("MainWindow", "Reset", None, -1))
         self.modelTable.horizontalHeaderItem(0).setText(QtWidgets.QApplication.translate("MainWindow", "Model", None, -1))
-
         self.modelTable.horizontalHeaderItem(1).setText(QtWidgets.QApplication.translate("MainWindow", "Output", None, -1))
         self.modelTable.horizontalHeaderItem(2).setText(QtWidgets.QApplication.translate("MainWindow", "Confidence", None, -1))
         self.tabWidget_2.setTabText(self.tabWidget_2.indexOf(self.tab_4), QtWidgets.QApplication.translate("MainWindow", "Model Info", None, -1))
         self.tabWidget_2.setTabText(self.tabWidget_2.indexOf(self.tab_5), QtWidgets.QApplication.translate("MainWindow", "Model Plot", None, -1))
         self.menuFile.setTitle(QtWidgets.QApplication.translate("MainWindow", "File", None, -1))
 
-from utils import ModelTable, ModelTree, AudioSlider, FolderTree, ModelInfo
-from plots import ModelPlot, TimePlot, DemonWidget, SpectrogramWidget
+from utils import AudioSlider, ModelTable, FolderTree, ModelInfo, ModelTree
+from plots import ModelPlot, SpectrogramWidget, DemonWidget
+

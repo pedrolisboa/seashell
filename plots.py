@@ -481,9 +481,7 @@ class DemonWidget(pg.GraphicsLayoutWidget):
 
     def calc_freqs(self):
         q1 = round(self.sample_rate/self.first_pass_sr) # 25 for 31250 sample rate ; decimatio ratio for 1st pass
-        print(q1)
         q2 = round((self.sample_rate/q1)/(2*self.max_freq)) # decimatio ratio for 2nd pass
-        print(q2)
         final_fs = (self.sample_rate//q1)//q2
         freq = fft_frequencies(sr=final_fs, n_fft=self.n_fft)
 
@@ -567,10 +565,6 @@ class DemonWidget(pg.GraphicsLayoutWidget):
     def update_config(self, new_sr=None, n_fft=None, max_freq=None, overlap_ratio=None):
         #########################################################################
         # TODO adapt to receive DEMON update
-        print(new_sr)
-        print(n_fft)
-        print(max_freq)
-        print(overlap_ratio)
         self.clear_plot()
         if new_sr is None:
             new_sr = self.sample_rate
@@ -606,7 +600,6 @@ class DemonWidget(pg.GraphicsLayoutWidget):
             )
             
             minimum = -max(min_value, self.counter)
-            print("setting ", self.time[0])
             self.p1.setYRange(max(-max_value, minimum), -self.time[0], update=True)
         #########################################################################
 

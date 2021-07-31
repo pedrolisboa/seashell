@@ -70,7 +70,7 @@
       <property name="frameShadow">
        <enum>QFrame::Raised</enum>
       </property>
-      <layout class="QVBoxLayout" name="verticalLayout" stretch="10,1,15,8">
+      <layout class="QVBoxLayout" name="verticalLayout" stretch="10,1,15">
        <item>
         <widget class="QTabWidget" name="tabWidget">
          <property name="currentIndex">
@@ -159,6 +159,9 @@
            </property>
            <item>
             <widget class="QScrollArea" name="scrollArea">
+             <property name="frameShape">
+              <enum>QFrame::NoFrame</enum>
+             </property>
              <property name="widgetResizable">
               <bool>true</bool>
              </property>
@@ -167,8 +170,8 @@
                <rect>
                 <x>0</x>
                 <y>0</y>
-                <width>437</width>
-                <height>150</height>
+                <width>439</width>
+                <height>201</height>
                </rect>
               </property>
               <layout class="QVBoxLayout" name="verticalLayout_3">
@@ -190,7 +193,7 @@
                <item>
                 <widget class="QFrame" name="frame_6">
                  <property name="frameShape">
-                  <enum>QFrame::StyledPanel</enum>
+                  <enum>QFrame::NoFrame</enum>
                  </property>
                  <property name="frameShadow">
                   <enum>QFrame::Raised</enum>
@@ -346,6 +349,9 @@
            </property>
            <item>
             <widget class="QScrollArea" name="scrollArea_3">
+             <property name="frameShape">
+              <enum>QFrame::NoFrame</enum>
+             </property>
              <property name="widgetResizable">
               <bool>true</bool>
              </property>
@@ -354,8 +360,8 @@
                <rect>
                 <x>0</x>
                 <y>0</y>
-                <width>437</width>
-                <height>150</height>
+                <width>439</width>
+                <height>201</height>
                </rect>
               </property>
               <layout class="QVBoxLayout" name="verticalLayout_12">
@@ -526,6 +532,9 @@
          <property name="frameShadow">
           <enum>QFrame::Raised</enum>
          </property>
+         <property name="lineWidth">
+          <number>1</number>
+         </property>
          <layout class="QHBoxLayout" name="horizontalLayout_3">
           <property name="spacing">
            <number>3</number>
@@ -602,10 +611,10 @@
                 <x>0</x>
                 <y>0</y>
                 <width>437</width>
-                <height>221</height>
+                <height>314</height>
                </rect>
               </property>
-              <layout class="QVBoxLayout" name="verticalLayout_2" stretch="4,2">
+              <layout class="QVBoxLayout" name="verticalLayout_2" stretch="7,5">
                <property name="spacing">
                 <number>2</number>
                </property>
@@ -714,50 +723,6 @@
          </widget>
         </widget>
        </item>
-       <item>
-        <widget class="QFrame" name="frame_2">
-         <property name="styleSheet">
-          <string notr="true">background-color: rgb(0, 0, 0);</string>
-         </property>
-         <property name="frameShape">
-          <enum>QFrame::StyledPanel</enum>
-         </property>
-         <property name="frameShadow">
-          <enum>QFrame::Raised</enum>
-         </property>
-         <layout class="QGridLayout" name="gridLayout_4">
-          <property name="leftMargin">
-           <number>3</number>
-          </property>
-          <property name="topMargin">
-           <number>3</number>
-          </property>
-          <property name="rightMargin">
-           <number>0</number>
-          </property>
-          <property name="bottomMargin">
-           <number>0</number>
-          </property>
-          <property name="spacing">
-           <number>0</number>
-          </property>
-          <item row="0" column="0">
-           <widget class="TimePlot" name="timePlot" native="true">
-            <widget class="TimePlot" name="widget_3" native="true">
-             <property name="geometry">
-              <rect>
-               <x>340</x>
-               <y>300</y>
-               <width>611</width>
-               <height>531</height>
-              </rect>
-             </property>
-            </widget>
-           </widget>
-          </item>
-         </layout>
-        </widget>
-       </item>
       </layout>
      </widget>
     </item>
@@ -782,12 +747,6 @@
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
  <customwidgets>
-  <customwidget>
-   <class>TimePlot</class>
-   <extends>QWidget</extends>
-   <header>plots</header>
-   <container>1</container>
-  </customwidget>
   <customwidget>
    <class>SpectrogramWidget</class>
    <extends>QWidget</extends>

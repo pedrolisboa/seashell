@@ -191,7 +191,7 @@ class MainWindow(QMainWindow):
         if reset_graphics:
             self.ui.specPlot.clear_plot()
             self.ui.demonPlot.clear_plot()
-            self.ui.timePlot.clear_plot()
+            #self.ui.timePlot.clear_plot()
             if not reset_models:
                 self.ui.modelPlot.clear_plot(unsubscribe=False)
 
@@ -239,7 +239,7 @@ class MainWindow(QMainWindow):
     # TODO see this
     def lockPlotScroll(self, x, y):
         self.ui.specPlot.p1.setMouseEnabled(x=x, y=y)
-        self.ui.timePlot.setMouseEnabled(x=x, y=y)
+        #self.ui.timePlot.setMouseEnabled(x=x, y=y)
         self.ui.modelPlot.plot.setMouseEnabled(x=x, y=y)
 
     def updateSignalProcessing(self, attr, value):
@@ -286,13 +286,13 @@ class MainWindow(QMainWindow):
 
             ##################################################################################################################
             self.ui.demonPlot.update_config(self.mr.rate, self.config["demon_n_fft"], self.config["demon_maxfreq"]/60, self.config["demon_overlap"]/100) # None chunk
-            self.ui.timePlot.update_config(self.mr.rate, None) # None chunk
+            #self.ui.timePlot.update_config(self.mr.rate, None) # None chunk
             self.ui.modelPlot.update_config(self.mr.rate, None) # None chunk
 
         if self.sig_sink is None:
             self.sig_sink = SignalSync(rq, 
                     self.config['rf_rate'], 
-                    [self.ui.timePlot.data_sink,
+                    [#self.ui.timePlot.data_sink,
                      self.ui.specPlot.data_sink,
                      self.ui.demonPlot.data_sink]
             )
