@@ -190,6 +190,7 @@ class MainWindow(QMainWindow):
 
         if reset_graphics:
             self.ui.specPlot.clear_plot()
+            self.ui.demonPlot.clear_plot()
             self.ui.timePlot.clear_plot()
             if not reset_models:
                 self.ui.modelPlot.clear_plot(unsubscribe=False)
@@ -202,7 +203,10 @@ class MainWindow(QMainWindow):
                 "n_fft": 1024,
                 "decimation": 3,
                 "tpsw": True,
-                "spec_cutoff": -4.00
+                "spec_cutoff": -4.00,
+                "demon_maxfreq": 35*60,
+                "demon_n_fft": 1024,
+                "demon_overlap": 0.5 
             }
         else:
             raise NotImplementedError("User input config not implemented")
@@ -216,6 +220,10 @@ class MainWindow(QMainWindow):
         self.ui.n_fft_combo.currentTextChanged.connect(lambda x: self.updateSignalProcessing('n_fft', x))
         self.ui.dec_combo.currentTextChanged.connect(lambda x: self.updateSignalProcessing('decimation', x))
 
+        self.ui.demon_maxfreq_spin.valueChanged.connect(lambda x: self.updateSignalProcessing('demon_maxfreq', x))
+        self.ui.demon_n_fft_combo.currentTextChanged.connect(lambda x: self.updateSignalProcessing('demon_n_fft', x))
+        self.ui.demon_overlap_spin.valueChanged.connect(lambda x: self.updateSignalProcessing('demon_overlap', x))
+
         self.ui.tpsw_check.setChecked(config["tpsw"])
 
         self.config = config
@@ -228,10 +236,9 @@ class MainWindow(QMainWindow):
         if event.key() == QtCore.Qt.Key_Shift:
             self.lockPlotScroll(True, False)
             
-
+    # TODO see this
     def lockPlotScroll(self, x, y):
         self.ui.specPlot.p1.setMouseEnabled(x=x, y=y)
-        self.ui.specPlot.p2.setMouseEnabled(x=x, y=y)
         self.ui.timePlot.setMouseEnabled(x=x, y=y)
         self.ui.modelPlot.plot.setMouseEnabled(x=x, y=y)
 
@@ -278,6 +285,7 @@ class MainWindow(QMainWindow):
             self.ui.specPlot.update_config(self.mr.rate, None, self.config["tpsw"], self.config["spec_cutoff"]) # None chunk
 
             ##################################################################################################################
+            self.ui.demonPlot.update_config(self.mr.rate, self.config["demon_n_fft"], self.config["demon_maxfreq"]/60, self.config["demon_overlap"]/100) # None chunk
             self.ui.timePlot.update_config(self.mr.rate, None) # None chunk
             self.ui.modelPlot.update_config(self.mr.rate, None) # None chunk
 
@@ -285,7 +293,8 @@ class MainWindow(QMainWindow):
             self.sig_sink = SignalSync(rq, 
                     self.config['rf_rate'], 
                     [self.ui.timePlot.data_sink,
-                     self.ui.specPlot.data_sink]
+                     self.ui.specPlot.data_sink,
+                     self.ui.demonPlot.data_sink]
             )
         
         if new_audio:
