@@ -3,7 +3,7 @@
 # Form implementation generated from reading ui file 'seashell_with_layouts.ui',
 # licensing of 'seashell_with_layouts.ui' applies.
 #
-# Created: Sun Aug  1 01:32:22 2021
+# Created: Sun Aug  1 01:45:14 2021
 #      by: pyside2-uic  running on PySide2 5.13.2
 #
 # WARNING! All changes made in this file will be lost!
@@ -362,7 +362,7 @@ class Ui_MainWindow(object):
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):
-        MainWindow.setWindowTitle(QtWidgets.QApplication.translate("MainWindow", "MainWindow", None, -1))
+        MainWindow.setWindowTitle(QtWidgets.QApplication.translate("MainWindow", "Seashell", None, -1))
         self.fileLoadButton.setText(QtWidgets.QApplication.translate("MainWindow", "Unload", None, -1))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab), QtWidgets.QApplication.translate("MainWindow", "Files", None, -1))
         self.cutoffCheck.setText(QtWidgets.QApplication.translate("MainWindow", "Spectrum Cutoff (dB)         ", None, -1))
@@ -401,6 +401,6 @@ class Ui_MainWindow(object):
         self.tabWidget_2.setTabText(self.tabWidget_2.indexOf(self.tab_5), QtWidgets.QApplication.translate("MainWindow", "Model Plot", None, -1))
         self.menuFile.setTitle(QtWidgets.QApplication.translate("MainWindow", "File", None, -1))
 
-from utils import AudioSlider, ModelTable, FolderTree, ModelInfo, ModelTree
-from plots import ModelPlot, SpectrogramWidget, DemonWidget
+from utils import AudioSlider, ModelInfo, FolderTree, ModelTree, ModelTable
+from plots import SpectrogramWidget, ModelPlot, DemonWidget
 
