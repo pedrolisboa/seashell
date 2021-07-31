@@ -14,7 +14,48 @@
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <layout class="QGridLayout" name="gridLayout_2" columnstretch="2,3,0">
+   <layout class="QGridLayout" name="gridLayout_2" columnstretch="3,5,0">
+    <item row="0" column="1">
+     <widget class="QFrame" name="frame">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(0, 0, 0);</string>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::StyledPanel</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Raised</enum>
+      </property>
+      <layout class="QVBoxLayout" name="verticalLayout_10">
+       <item>
+        <widget class="SpectrogramWidget" name="specPlot" native="true">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="DemonWidget" name="demonPlot" native="true">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </item>
     <item row="0" column="0">
      <widget class="QFrame" name="frame_5">
       <property name="sizePolicy">
@@ -126,25 +167,25 @@
                <rect>
                 <x>0</x>
                 <y>0</y>
-                <width>468</width>
+                <width>437</width>
                 <height>150</height>
                </rect>
               </property>
               <layout class="QVBoxLayout" name="verticalLayout_3">
                <property name="spacing">
-                <number>0</number>
+                <number>3</number>
                </property>
                <property name="leftMargin">
-                <number>0</number>
+                <number>9</number>
                </property>
                <property name="topMargin">
-                <number>0</number>
+                <number>9</number>
                </property>
                <property name="rightMargin">
-                <number>0</number>
+                <number>9</number>
                </property>
                <property name="bottomMargin">
-                <number>0</number>
+                <number>9</number>
                </property>
                <item>
                 <widget class="QFrame" name="frame_6">
@@ -168,14 +209,20 @@
                    <number>2</number>
                   </property>
                   <item>
-                   <layout class="QHBoxLayout" name="horizontalLayout_6" stretch="5,0,5">
+                   <layout class="QHBoxLayout" name="horizontalLayout_6" stretch="5,5">
                     <item>
                      <widget class="QCheckBox" name="cutoffCheck">
+                      <property name="sizePolicy">
+                       <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                        <horstretch>0</horstretch>
+                        <verstretch>0</verstretch>
+                       </sizepolicy>
+                      </property>
                       <property name="layoutDirection">
-                       <enum>Qt::RightToLeft</enum>
+                       <enum>Qt::LeftToRight</enum>
                       </property>
                       <property name="text">
-                       <string>Spectrum Cutoff</string>
+                       <string>Spectrum Cutoff (dB)         </string>
                       </property>
                       <property name="checked">
                        <bool>true</bool>
@@ -183,20 +230,10 @@
                      </widget>
                     </item>
                     <item>
-                     <widget class="QLabel" name="label_5">
-                      <property name="layoutDirection">
-                       <enum>Qt::LeftToRight</enum>
-                      </property>
-                      <property name="text">
-                       <string>(dB)</string>
-                      </property>
-                      <property name="alignment">
-                       <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-                      </property>
-                     </widget>
-                    </item>
-                    <item>
                      <widget class="QDoubleSpinBox" name="cutoffBox">
+                      <property name="buttonSymbols">
+                       <enum>QAbstractSpinBox::PlusMinus</enum>
+                      </property>
                       <property name="minimum">
                        <double>-9999.000000000000000</double>
                       </property>
@@ -271,7 +308,7 @@
                   <item>
                    <widget class="QCheckBox" name="tpsw_check">
                     <property name="layoutDirection">
-                     <enum>Qt::RightToLeft</enum>
+                     <enum>Qt::LeftToRight</enum>
                     </property>
                     <property name="text">
                      <string>TPSW</string>
@@ -283,6 +320,141 @@
                   </item>
                  </layout>
                 </widget>
+               </item>
+              </layout>
+             </widget>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+         <widget class="QWidget" name="tab_6">
+          <attribute name="title">
+           <string>DEMON</string>
+          </attribute>
+          <layout class="QVBoxLayout" name="verticalLayout_11">
+           <property name="leftMargin">
+            <number>0</number>
+           </property>
+           <property name="topMargin">
+            <number>0</number>
+           </property>
+           <property name="rightMargin">
+            <number>0</number>
+           </property>
+           <property name="bottomMargin">
+            <number>0</number>
+           </property>
+           <item>
+            <widget class="QScrollArea" name="scrollArea_3">
+             <property name="widgetResizable">
+              <bool>true</bool>
+             </property>
+             <widget class="QWidget" name="scrollAreaWidgetContents_3">
+              <property name="geometry">
+               <rect>
+                <x>0</x>
+                <y>0</y>
+                <width>437</width>
+                <height>150</height>
+               </rect>
+              </property>
+              <layout class="QVBoxLayout" name="verticalLayout_12">
+               <item>
+                <layout class="QHBoxLayout" name="horizontalLayout_9">
+                 <item>
+                  <widget class="QLabel" name="label_4">
+                   <property name="text">
+                    <string>Window Size</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QComboBox" name="demon_n_fft_combo">
+                   <property name="currentText">
+                    <string>1024</string>
+                   </property>
+                   <item>
+                    <property name="text">
+                     <string>1024</string>
+                    </property>
+                   </item>
+                   <item>
+                    <property name="text">
+                     <string>2048</string>
+                    </property>
+                   </item>
+                  </widget>
+                 </item>
+                </layout>
+               </item>
+               <item>
+                <layout class="QHBoxLayout" name="horizontalLayout_11">
+                 <item>
+                  <widget class="QLabel" name="label_5">
+                   <property name="text">
+                    <string>Maximum Frequency (RPM)</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QDoubleSpinBox" name="demon_maxfreq_spin">
+                   <property name="enabled">
+                    <bool>true</bool>
+                   </property>
+                   <property name="frame">
+                    <bool>true</bool>
+                   </property>
+                   <property name="readOnly">
+                    <bool>false</bool>
+                   </property>
+                   <property name="buttonSymbols">
+                    <enum>QAbstractSpinBox::PlusMinus</enum>
+                   </property>
+                   <property name="decimals">
+                    <number>0</number>
+                   </property>
+                   <property name="minimum">
+                    <double>2100.000000000000000</double>
+                   </property>
+                   <property name="maximum">
+                    <double>4200.000000000000000</double>
+                   </property>
+                   <property name="singleStep">
+                    <double>60.000000000000000</double>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </item>
+               <item>
+                <layout class="QHBoxLayout" name="horizontalLayout_10">
+                 <item>
+                  <widget class="QLabel" name="label">
+                   <property name="text">
+                    <string>Overlap Ratio (%)</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QDoubleSpinBox" name="demon_overlap_spin">
+                   <property name="buttonSymbols">
+                    <enum>QAbstractSpinBox::PlusMinus</enum>
+                   </property>
+                   <property name="decimals">
+                    <number>0</number>
+                   </property>
+                   <property name="maximum">
+                    <double>50.000000000000000</double>
+                   </property>
+                   <property name="singleStep">
+                    <double>5.000000000000000</double>
+                   </property>
+                   <property name="value">
+                    <double>50.000000000000000</double>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
                </item>
               </layout>
              </widget>
@@ -429,7 +601,7 @@
                <rect>
                 <x>0</x>
                 <y>0</y>
-                <width>468</width>
+                <width>437</width>
                 <height>221</height>
                </rect>
               </property>
@@ -555,10 +727,10 @@
          </property>
          <layout class="QGridLayout" name="gridLayout_4">
           <property name="leftMargin">
-           <number>0</number>
+           <number>3</number>
           </property>
           <property name="topMargin">
-           <number>0</number>
+           <number>3</number>
           </property>
           <property name="rightMargin">
            <number>0</number>
@@ -584,37 +756,6 @@
            </widget>
           </item>
          </layout>
-        </widget>
-       </item>
-      </layout>
-     </widget>
-    </item>
-    <item row="0" column="1">
-     <widget class="QFrame" name="frame">
-      <property name="sizePolicy">
-       <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-        <horstretch>0</horstretch>
-        <verstretch>0</verstretch>
-       </sizepolicy>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">background-color: rgb(0, 0, 0);</string>
-      </property>
-      <property name="frameShape">
-       <enum>QFrame::StyledPanel</enum>
-      </property>
-      <property name="frameShadow">
-       <enum>QFrame::Raised</enum>
-      </property>
-      <layout class="QGridLayout" name="gridLayout_3">
-       <item row="0" column="0">
-        <widget class="SpectrogramWidget" name="specPlot" native="true">
-         <property name="sizePolicy">
-          <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
-         </property>
         </widget>
        </item>
       </layout>
@@ -683,6 +824,12 @@
    <class>AudioSlider</class>
    <extends>QSlider</extends>
    <header>utils</header>
+  </customwidget>
+  <customwidget>
+   <class>DemonWidget</class>
+   <extends>QWidget</extends>
+   <header>plots</header>
+   <container>1</container>
   </customwidget>
  </customwidgets>
  <resources/>
