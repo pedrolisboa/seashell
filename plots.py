@@ -99,14 +99,16 @@ class ModelPlot(pg.GraphicsLayoutWidget):
        self.plot.showGrid(x=True, y=True)
     #    self.line_ref = self.plot(pen='#4f92ce')
     #    self.colors = cycle(['#66b266'])
-       self.colors = cycle(['#66b266', '#ff6262', '#008169', '#facc64'])
+    
+       self.colors = cycle(['#f40000', '#0dffe4', '#64e07f', '#a0b800', '#d18100'])
+       #self.colors = cycle(['#66b266', '#ff6262', '#008169', '#facc64'])
 
        self.counter = 0 
        self.data_sink.connect(self.update_model)
 
-       styles = {"font-size": "12px"}
-       self.plot.setLabel("left", "Output", **styles)
-       self.plot.setLabel("bottom", "Time Elapsed (s)", **styles)
+       #styles = {"font-size": "12px"}
+       self.plot.setLabel("left", "Output")
+       self.plot.setLabel("bottom", "Time Elapsed (s)")
        
        self.legend = self.plot.addLegend()
        self.legend.setBrush('k')
